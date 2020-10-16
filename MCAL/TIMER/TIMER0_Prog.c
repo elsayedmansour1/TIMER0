@@ -110,11 +110,15 @@ void TIMER0_OCM_Interrupt_Enable(void)
 	SET_BIT(TIMSK,OCIE0);
 }
 
-void TIMER0_Timer_Counter(void)
+void TIMER0_Timer_Counter(u8 Value_of_TCNT0)
 {
 	TCCR0=Value_of_TCNT0;
 }
-void TIMER0_Output_Compare(void)
+void TIMER0_Output_Compare(u8 Value_of_OCR0)
 {
 	OCR0=Value_of_OCR0;
+}
+void TIMER0_Set_Duty_Cycle(u8 Duty_Cycle )
+{
+	OCR0=(Duty_Cycle*255)/100;
 }
